@@ -1,7 +1,11 @@
 <?php
 
+define('ROOT_DIRECTORY', __DIR__);
+
 // On charges les librairies principales (logger, etc...)
 include __DIR__.'/lib/logger.php';
+include __DIR__.'/lib/conf.php';
+include __DIR__.'/lib/routing.php';
 
 // On active le logger
 lib\logger\logger_register();
@@ -20,8 +24,17 @@ if('/' === $uri) {
   $uri = '/index.php'; 
 }
 
-// On construit le chemin vers le fichier php
-$pathPagePhp = __DIR__.'/'.$uri; 
+$route = lib\routing\routing_match($uri);
+
+if (null !== $route && isset($route['file_php'])) {
+    // On construit le chemin vers le fichier php
+    $pathPagePhp = __DIR__.'/'.$route['file_php'];
+}
+else
+{
+    // On construit le chemin vers le fichier php
+    $pathPagePhp = __DIR__.'/'.$uri;
+}
 
 // Le page php existe
 if (file_exists($pathPagePhp) && is_file($pathPagePhp)) {

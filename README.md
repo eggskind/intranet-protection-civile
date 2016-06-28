@@ -26,3 +26,6 @@ Modules apache :
 1. git clone https://github.com/ProtectionCivile/intranet-protection-civile.git
 2. Aller sur http://localhost/index.php
 
+#### Contribuer
+
+Allez vers [CONTRIB.md] (CONTRIB.md)
