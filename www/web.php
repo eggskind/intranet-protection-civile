@@ -12,6 +12,9 @@ $uri = $_SERVER['REQUEST_URI'];
 // On protège l'include contre les attaques par chemin relatifs
 $uri = str_replace('..', '', $uri);
 
+// On ne doit tenir compte uniquement de ce qu'il ya avant ?
+list($uri) = explode('?', $uri);
+
 // Si aucune page n'est demandé alors on appel la page index.php
 if('/' === $uri) {
   $uri = '/index.php'; 
