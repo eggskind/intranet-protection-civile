@@ -1,4 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine on
 
-RewriteRule ^([a-z/-]+).php$ web.php
+RewriteRule ^([-_a-z]+).php$ web.php
