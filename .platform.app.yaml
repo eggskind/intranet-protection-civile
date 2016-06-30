@@ -1,0 +1,13 @@
+name: intranet
+
+type: php:5.6
+
+web:
+    document_root: "/www"
+    passthru: "/index.php"
+
+disk: 2048
+
+mounts:
+    "/www/logs": "shared:files/logs"
+
