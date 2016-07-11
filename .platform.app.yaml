@@ -11,3 +11,5 @@ disk: 2048
 mounts:
     "/www/logs": "shared:files/logs"
 
+relationships:
+    database: "mysql:mysql"
