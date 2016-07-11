@@ -3,6 +3,24 @@ $hostname_dbprotect = "localhost";
 $username_dbprotect = "root";
 $password_dbprotect = "root";
 $database_dbprotect = "ADPC"; 
+
+$relationships = getenv("PLATFORM_RELATIONSHIPS");
+if (!$relationships) {
+  return;
+}
+
+$relationships = json_decode(base64_decode($relationships), TRUE);
+
+foreach ($relationships['database'] as $endpoint) {
+  if (empty($endpoint['query']['is_master'])) {
+    continue;
+  }
+  $hostname_dbprotect = $endpoint['host'];
+  $username_dbprotect = $endpoint['username'];
+  $password_dbprotect = $endpoint['password'];
+  $database_dbprotect = $endpoint['path'];
+}
+
 $tablename_dbprotect= "membres";    // nom de la table utilisée
 $tablename_commune = "commune";		//liste des communes
 $tablename_ratcommune = "rat_com";		//liste des rattachements aux communes
